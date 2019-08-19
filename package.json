@@ -22,6 +22,7 @@
     "dotenv": "^8.1.0",
     "moment": "^2.24.0",
     "node": "^12.8.1",
+    "node-spotify-api": "^1.1.1",
     "spotify": "^0.3.0"
   },
   "devDependencies": {}
