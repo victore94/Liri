@@ -1,5 +1,5 @@
-var keys = require("./keys.js");
 require("dotenv").config()
+var keys = require("./keys.js");
 var fs = require("fs");
 var axios = require('axios')
 var Spotify = require('node-spotify-api');
@@ -26,16 +26,21 @@ switch (action) {
         break;
 }
 
-
 // -------------------------------------------------------------------------------
 // ----------------------------------Spotify--------------------------------------
 // -------------------------------------------------------------------------------
+
 function spotifyThisSong() {
     var spotify = new Spotify(keys.spotify);
 
-    spotify.search({ type: 'track', query: songName }, function (response) {
-        console.log(response)
-    })
+    spotify
+        .search({ type: 'track', query: 'All the Small Things' })
+        .then(function (response) {
+            console.log(response.tracks.items);
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
 }
 
 // -------------------------------------------------------------------------------
@@ -44,7 +49,7 @@ function spotifyThisSong() {
 
 
 // -------------------------------------------------------------------------------
-// -------------------------------OMDB MOVIE--------------------------------------
+// ---------------------------------OMDB MOVIE------------------------------------
 // -------------------------------------------------------------------------------
 // this will take in a movie title and spit out information regarding a movie
 
